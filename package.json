@@ -1,0 +1,24 @@
+{
+  "name": "linter-js-yaml",
+  "linter-package": true,
+  "activationEvents": [],
+  "main": "./lib/init",
+  "version": "0.0.1",
+  "description": "Linter plugin for YAML, using js-yaml",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eXprojects/linter-js-yaml"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "js-yaml": "~3.1.0"
+  },
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/eXprojects/linter-js-yaml/issues"
+  },
+  "homepage": "https://github.com/eXprojects/linter-js-yaml"
+}
