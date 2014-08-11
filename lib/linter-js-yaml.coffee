@@ -30,4 +30,10 @@ class LinterJsYaml extends Linter
   destroy: ->
     atom.config.unobserve 'linter-js-yaml.jsYamlExecutablePath'
 
+  createMessage: (match) ->
+    # Easy fix when editor has no newline at end of file
+    if match.line > @editor.getLineCount()
+      match.line = @editor.getLineCount()
+    super(match)
+
 module.exports = LinterJsYaml
