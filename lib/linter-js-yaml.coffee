@@ -1,3 +1,5 @@
+fs = require 'fs'
+yaml = require 'js-yaml'
 linterPath = atom.packages.getLoadedPackage("linter").path
 Linter = require "#{linterPath}/lib/linter"
 
@@ -27,13 +29,32 @@ class LinterJsYaml extends Linter
     atom.config.observe 'linter-js-yaml.jsYamlExecutablePath', =>
       @executablePath = atom.config.get 'linter-js-yaml.jsYamlExecutablePath'
 
+  lintFile: (filePath, callback) ->
+    input = fs.readFileSync filePath, 'utf8'
+    messages = []
+
+    try
+      yaml.load input, onWarning: (error) =>
+        msg = @createMessage error
+        messages.push msg if msg.range?
+    catch error
+      msg = @createMessage error
+      messages.push msg if msg.range?
+
+    callback messages
+
+  createMessage: (error) ->
+    match =
+      line: error.mark.line
+      col: error.mark.column
+      message: error.reason
+
+    # fix column num, first line is 0
+    match.line += 1
+
+    super(match)
+
   destroy: ->
     atom.config.unobserve 'linter-js-yaml.jsYamlExecutablePath'
-
-  createMessage: (match) ->
-    # Easy fix when editor has no newline at end of file
-    if match.line > @editor.getLineCount()
-      match.line = @editor.getLineCount()
-    super(match)
 
 module.exports = LinterJsYaml
