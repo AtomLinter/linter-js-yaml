@@ -40,6 +40,12 @@ class LinterJsYaml extends Linter
       catch e
         super(filePath, callback)
 
+  createMessage: (match) ->
+    if match.message.startsWith('unknown tag')
+      match.warning = true
+
+    super(match)
+
   destroy: ->
     atom.config.unobserve 'linter-js-yaml.jsYamlExecutablePath'
 
