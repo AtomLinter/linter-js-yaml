@@ -1,7 +1,7 @@
 {
   "name": "linter-js-yaml",
   "linter-package": true,
-  "activationEvents": [],
+  "activationCommands": {},
   "main": "./lib/init",
   "version": "1.0.0",
   "description": "Linter plugin for YAML, using js-yaml",
