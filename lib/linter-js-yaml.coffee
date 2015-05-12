@@ -26,8 +26,8 @@ class LinterJsYaml extends Linter
   constructor: (editor) ->
     super(editor)
 
-    @executablePathListener = atom.config.observe 'linter-erb.jsYamlExecutablePath', =>
-      @executablePath = atom.config.get 'linter-erb.jsYamlExecutablePath'
+    @executablePathListener = atom.config.observe 'linter-js-yaml.jsYamlExecutablePath', =>
+      @executablePath = atom.config.get 'linter-js-yaml.jsYamlExecutablePath'
 
   lintFile: (filePath, callback) ->
     fs.readFile filePath, 'utf8', (err, data) =>

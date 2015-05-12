@@ -4,7 +4,7 @@ module.exports =
   config:
     jsYamlExecutablePath:
       default: path.join __dirname, '..', 'node_modules', 'js-yaml', 'bin'
-      title: 'Erb Executable Path'
+      title: 'Js Yaml Executable Path'
       type: 'string'
 
   activate: ->
