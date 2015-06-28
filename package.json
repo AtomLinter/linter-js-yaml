@@ -1,6 +1,6 @@
 {
   "name": "linter-js-yaml",
-  "main": "./lib/init",
+  "main": "./lib/linter-js-yaml",
   "version": "1.0.1",
   "description": "Linter plugin for YAML, using js-yaml",
   "repository": {
