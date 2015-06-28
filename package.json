@@ -1,7 +1,7 @@
 {
   "name": "linter-js-yaml",
   "main": "./lib/linter-js-yaml",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Linter plugin for YAML, using js-yaml",
   "repository": {
     "type": "git",
