@@ -1,52 +1,34 @@
-fs = require 'fs'
-yaml = require 'js-yaml'
-linterPath = atom.packages.getLoadedPackage("linter").path
-Linter = require "#{linterPath}/lib/linter"
+path = require 'path'
 
-class LinterJsYaml extends Linter
-  # The syntax that the linter handles. May be a string or
-  # list/tuple of strings. Names should be all lowercase.
-  @syntax: ['source.yaml']
+module.exports =
+  config:
+    jsYamlExecutablePath:
+      default: path.join __dirname, '..', 'node_modules', 'js-yaml', 'bin'
+      title: 'Js Yaml Executable Path'
+      type: 'string'
 
-  # A string, list, tuple or callable that returns a string, list or tuple,
-  # containing the command line (with arguments) used to lint.
-  cmd: 'js-yaml.js'
+  activate: ->
 
-  executablePath: null
-
-  linterName: 'js-yaml'
-
-  isNodeExecutable: yes
-
-  errorStream: 'stderr'
-
-  # A regex pattern used to extract information from the executable's output.
-  regex: 'JS-YAML: (?<message>.+) at line (?<line>\\d+), column (?<col>\\d+):'
-
-  constructor: (editor) ->
-    super(editor)
-
-    @executablePathListener = atom.config.observe 'linter-js-yaml.jsYamlExecutablePath', =>
-      @executablePath = atom.config.get 'linter-js-yaml.jsYamlExecutablePath'
-
-  lintFile: (filePath, callback) ->
-    fs.readFile filePath, 'utf8', (err, data) =>
-      messages = []
-
-      try
-        yaml.safeLoad data, onWarning: (error) ->
-          messages.push error.message
-        @processMessage messages, callback
-      catch e
-        super(filePath, callback)
-
-  createMessage: (match) ->
-    if match.message.startsWith('unknown tag')
-      match.warning = true
-
-    super(match)
-
-  destroy: ->
-    @executablePathListener.dispose()
-
-module.exports = LinterJsYaml
+  provideLinter: ->
+    yaml = require('js-yaml')
+    provider =
+      grammarScopes: ['source.yaml']
+      scope: 'file'
+      lintOnFly: true
+      processMessage: (type, path, message)->
+        point = [message.mark.line, message.mark.column]
+        {
+          type: type,
+          text: message.reason,
+          filePath: path,
+          range: [point, point]
+        }
+      lint: (textEditor)->
+        return new Promise (resolve)->
+          messages = []
+          try
+            yaml.safeLoad textEditor.getText(), onWarning: (warning) ->
+              messages.push(provider.processMessage('Warning', textEditor.getPath(), warning))
+          catch error
+            messages.push(provider.processMessage('Error', textEditor.getPath(), error))
+          resolve(messages)
