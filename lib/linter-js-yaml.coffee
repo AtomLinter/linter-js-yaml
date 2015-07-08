@@ -1,8 +1,6 @@
 path = require 'path'
 
 module.exports =
-  activate: ->
-
   provideLinter: ->
     yaml = require('js-yaml')
     provider =
