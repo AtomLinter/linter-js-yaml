@@ -19,7 +19,7 @@ module.exports =
         return new Promise (resolve)->
           messages = []
           try
-            yaml.safeLoad textEditor.getText(), onWarning: (warning) ->
+            yaml.safeLoadAll textEditor.getText(), ((doc) -> null), onWarning: (warning) ->
               messages.push(provider.processMessage('Warning', textEditor.getPath(), warning))
           catch error
             messages.push(provider.processMessage('Error', textEditor.getPath(), error))
