@@ -1,0 +1,9 @@
+Resources:
+  RootRole:
+    Properties:
+      Policies:
+        - !yaml AmazonS3ReadOnlyAccess:config/policies.yaml
+
+/companies: !include companies.yml
+/devices: !include devices.yml
+/servers: !include servers.yml
