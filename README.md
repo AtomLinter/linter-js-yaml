@@ -5,7 +5,7 @@ This package will lint your `.yaml` opened files in Atom through [js-yaml](https
 #### Installation
 
 ```
-$ apm install linter-flow
+$ apm install linter-js-yaml
 ```
 
 #### Settings
