@@ -6,10 +6,6 @@
   "homepage": "https://github.com/AtomLinter/linter-js-yaml",
   "license": "MIT",
   "activationCommands": [],
-  "keywords": [
-    "linter",
-    "atom"
-  ],
   "engines": {
     "atom": ">=1.0.0"
   },
