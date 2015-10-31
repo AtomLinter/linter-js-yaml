@@ -1,0 +1,12 @@
+---
+framework:
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+
+---
+framework:
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+---
