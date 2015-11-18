@@ -1,4 +1,6 @@
 'use babel';
+/* eslint-env jasmine */
+/* global waitsForPromise */
 
 describe('Js-YAML provider for Linter', () => {
   const lint = require('../lib/linter-js-yaml.js').provideLinter().lint;
@@ -19,7 +21,7 @@ describe('Js-YAML provider for Linter', () => {
         expect(messages[0].type).toEqual('Error');
         expect(messages[0].text).toEqual('end of the stream or a document separator is expected');
         expect(messages[0].filePath).toMatch(/.+bad\.yaml$/);
-        expect(messages[0].range).toEqual([[2, 4], [2, 5]]);
+        expect(messages[0].range).toEqual([[2, 4], [2, 4]]);
       });
     });
   });
