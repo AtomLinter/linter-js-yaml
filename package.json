@@ -15,7 +15,7 @@
     "test": "apm test"
   },
   "dependencies": {
-    "atom-linter": "^3.3.5",
+    "atom-linter": "^3.3.7",
     "atom-package-deps": "^3.0.2",
     "js-yaml": "3.4.3"
   },
