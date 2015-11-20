@@ -13,7 +13,7 @@ describe('Js-YAML provider for Linter', () => {
     });
   });
 
-  it('bad.yaml', () => {
+  it('finds something wrong with bad.yaml', () => {
     waitsForPromise(() => {
       return atom.workspace.open(__dirname + '/files/bad.yaml').then(editor => {
         const messages = lint(editor);
@@ -26,7 +26,7 @@ describe('Js-YAML provider for Linter', () => {
     });
   });
 
-  it('issue-2.yaml', () => {
+  it('finds nothing wrong with issue-2.yaml.', () => {
     waitsForPromise(() => {
       return atom.workspace.open(__dirname + '/files/issue-2.yaml').then(editor => {
         const messages = lint(editor);
@@ -35,7 +35,7 @@ describe('Js-YAML provider for Linter', () => {
     });
   });
 
-  it('ssue-9.yaml', () => {
+  it('finds nothing wrong with issue-9.yaml.', () => {
     waitsForPromise(() => {
       return atom.workspace.open(__dirname + '/files/issue-9.yaml').then(editor => {
         const messages = lint(editor);
