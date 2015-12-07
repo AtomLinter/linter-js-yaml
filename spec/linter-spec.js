@@ -21,7 +21,7 @@ describe('Js-YAML provider for Linter', () => {
         expect(messages[0].type).toEqual('Error');
         expect(messages[0].text).toEqual('end of the stream or a document separator is expected');
         expect(messages[0].filePath).toMatch(/.+bad\.yaml$/);
-        expect(messages[0].range).toEqual([[2, 4], [2, 4]]);
+        expect(messages[0].range).toEqual([[2, 4], [2, 5]]);
       });
     });
   });
