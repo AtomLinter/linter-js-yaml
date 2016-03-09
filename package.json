@@ -17,7 +17,7 @@
   "dependencies": {
     "atom-linter": "^4.5.1",
     "atom-package-deps": "^4.0.1",
-    "js-yaml": "^3.4.6"
+    "js-yaml": "^3.5.4"
   },
   "devDependencies": {
     "eslint": "^2.4.0",
