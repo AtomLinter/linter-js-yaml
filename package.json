@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "eslint": "^2.8.0",
-    "eslint-config-airbnb-base": "^1.0.3",
+    "eslint-config-airbnb-base": "^2.0.0",
     "eslint-plugin-import": "^1.5.0"
   },
   "package-deps": [
@@ -38,7 +38,14 @@
     "extends": "airbnb-base",
     "rules": {
       "global-require": 0,
-      "import/no-unresolved": [2, { "ignore": ["atom"] }]
+      "import/no-unresolved": [
+        2,
+        {
+          "ignore": [
+            "atom"
+          ]
+        }
+      ]
     },
     "env": {
       "es6": true,
