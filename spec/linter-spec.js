@@ -19,7 +19,7 @@ describe('Js-YAML provider for Linter', () => {
 
   it('finds something wrong with bad.yaml', () =>
     waitsForPromise(() =>
-      atom.workspace.open(badPath).then(editor => {
+      atom.workspace.open(badPath).then((editor) => {
         const messages = lint(editor);
         expect(messages.length).toEqual(1);
         expect(messages[0].type).toEqual('Error');
@@ -32,7 +32,7 @@ describe('Js-YAML provider for Linter', () => {
 
   it('finds nothing wrong with issue-2.yaml.', () =>
     waitsForPromise(() =>
-      atom.workspace.open(issue2Path).then(editor => {
+      atom.workspace.open(issue2Path).then((editor) => {
         const messages = lint(editor);
         expect(messages.length).toEqual(0);
       })
@@ -41,7 +41,7 @@ describe('Js-YAML provider for Linter', () => {
 
   it('finds nothing wrong with issue-9.yaml.', () =>
     waitsForPromise(() =>
-      atom.workspace.open(issue9Path).then(editor => {
+      atom.workspace.open(issue9Path).then((editor) => {
         const messages = lint(editor);
         expect(messages.length).toEqual(0);
       })
