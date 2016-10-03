@@ -1,15 +1,14 @@
 # linter-js-yaml
 
-This package will parse your YAML files in Atom through
-[js-yaml](https://github.com/connec/yaml-js), exposing any issues reported.
+This package will parse your YAML files in Atom through [js-yaml](https://github.com/connec/yaml-js), exposing any issues reported.
 
-#### Installation
+## Installation
 
 ```
 $ apm install linter-js-yaml
 ```
 
-#### Settings
+## Settings
 
 You can configure linter-js-yaml by editing ~/.atom/config.cson (choose Open Your Config in Atom menu) or in Preferences:
 
@@ -18,7 +17,19 @@ You can configure linter-js-yaml by editing ~/.atom/config.cson (choose Open You
   'customTags': [
     "!yaml"
     "!include"
+    {
+      tag:  "!Base64"
+      kind: "mapping"
+    }
+    {
+      tag:  "!Equals"
+      kind: "sequence"
+    }
+    {
+      tag: "!If"
+      # kind defaults to `scalar`
+    }
   ]
 ```
 
-* `customTags`: List of YAML custom tags. (Default: scalar)
+- `customTags`: List of YAML custom tags. (Default: scalar, unless `kind` is set)
