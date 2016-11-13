@@ -2,6 +2,7 @@
 
 import * as path from 'path';
 
+const travisYml = path.join(__dirname, '.travis.yml');
 const badPath = path.join(__dirname, 'files', 'bad.yaml');
 const issue2Path = path.join(__dirname, 'files', 'issue-2.yaml');
 const issue9Path = path.join(__dirname, 'files', 'issue-9.yaml');
@@ -9,13 +10,25 @@ const issue9Path = path.join(__dirname, 'files', 'issue-9.yaml');
 describe('Js-YAML provider for Linter', () => {
   const lint = require('../lib/linter-js-yaml.js').provideLinter().lint;
 
-  beforeEach(() =>
+  beforeEach(() => {
+    // This whole beforeEach function is inspired by:
+    // https://github.com/AtomLinter/linter-jscs/pull/295/files
+    //
+    // See also:
+    // https://discuss.atom.io/t/activationhooks-break-unit-tests/36028/8
+    const activationPromise = atom.packages.activatePackage('linter-js-yaml').then(() =>
+      atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include'])
+    );
+
     waitsForPromise(() =>
-      atom.packages.activatePackage('linter-js-yaml').then(() =>
-        atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include'])
-      )
-    )
-  );
+      atom.packages.activatePackage('language-yaml'));
+
+    waitsForPromise(() =>
+      atom.workspace.open(travisYml));
+
+    atom.packages.triggerDeferredActivationHooks();
+    waitsForPromise(() => activationPromise);
+  });
 
   it('finds something wrong with bad.yaml', () =>
     waitsForPromise(() =>
