@@ -11,20 +11,16 @@ describe('Js-YAML provider for Linter', () => {
   const lint = require('../lib/linter-js-yaml.js').provideLinter().lint;
 
   beforeEach(() => {
-    // This whole beforeEach function is inspired by:
-    // https://github.com/AtomLinter/linter-jscs/pull/295/files
-    //
-    // See also:
-    // https://discuss.atom.io/t/activationhooks-break-unit-tests/36028/8
+    // Info about this beforeEach() implementation:
+    // https://github.com/AtomLinter/Meta/issues/15
     const activationPromise = atom.packages.activatePackage('linter-js-yaml').then(() =>
       atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include'])
     );
 
     waitsForPromise(() =>
-      atom.packages.activatePackage('language-yaml'));
-
-    waitsForPromise(() =>
-      atom.workspace.open(travisYml));
+      atom.packages.activatePackage('language-yaml').then(() =>
+        atom.workspace.open(travisYml)
+    ));
 
     atom.packages.triggerDeferredActivationHooks();
     waitsForPromise(() => activationPromise);
