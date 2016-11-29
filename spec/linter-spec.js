@@ -9,13 +9,21 @@ const issue9Path = path.join(__dirname, 'files', 'issue-9.yaml');
 describe('Js-YAML provider for Linter', () => {
   const lint = require('../lib/linter-js-yaml.js').provideLinter().lint;
 
-  beforeEach(() =>
+  beforeEach(() => {
+    // Info about this beforeEach() implementation:
+    // https://github.com/AtomLinter/Meta/issues/15
+    const activationPromise = atom.packages.activatePackage('linter-js-yaml').then(() =>
+      atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include'])
+    );
+
     waitsForPromise(() =>
-      atom.packages.activatePackage('linter-js-yaml').then(() =>
-        atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include'])
-      )
-    )
-  );
+      atom.packages.activatePackage('language-yaml').then(() =>
+        atom.workspace.open('ok-if-it-doesnt-exist.yml')
+    ));
+
+    atom.packages.triggerDeferredActivationHooks();
+    waitsForPromise(() => activationPromise);
+  });
 
   it('finds something wrong with bad.yaml', () =>
     waitsForPromise(() =>

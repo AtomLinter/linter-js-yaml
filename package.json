@@ -5,7 +5,7 @@
   "repository": "https://github.com/AtomLinter/linter-js-yaml.git",
   "homepage": "https://github.com/AtomLinter/linter-js-yaml",
   "license": "MIT",
-  "activationCommands": [],
+  "activationHooks": ["language-yaml:grammar-used"],
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
