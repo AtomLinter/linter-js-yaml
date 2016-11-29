@@ -40,7 +40,6 @@
     "extends": "airbnb-base",
     "rules": {
       "global-require": "off",
-      "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": [
         "error",
         {
@@ -51,7 +50,6 @@
       ]
     },
     "env": {
-      "es6": true,
       "node": true
     },
     "globals": {
