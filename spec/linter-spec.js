@@ -2,7 +2,6 @@
 
 import * as path from 'path';
 
-const travisYml = path.join(__dirname, '.travis.yml');
 const badPath = path.join(__dirname, 'files', 'bad.yaml');
 const issue2Path = path.join(__dirname, 'files', 'issue-2.yaml');
 const issue9Path = path.join(__dirname, 'files', 'issue-9.yaml');
@@ -19,7 +18,7 @@ describe('Js-YAML provider for Linter', () => {
 
     waitsForPromise(() =>
       atom.packages.activatePackage('language-yaml').then(() =>
-        atom.workspace.open(travisYml)
+        atom.workspace.open('ok-if-it-doesnt-exist.yml')
     ));
 
     atom.packages.triggerDeferredActivationHooks();
