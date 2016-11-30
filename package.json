@@ -5,7 +5,9 @@
   "repository": "https://github.com/AtomLinter/linter-js-yaml.git",
   "homepage": "https://github.com/AtomLinter/linter-js-yaml",
   "license": "MIT",
-  "activationHooks": ["language-yaml:grammar-used"],
+  "activationHooks": [
+    "language-yaml:grammar-used"
+  ],
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
@@ -20,9 +22,9 @@
     "js-yaml": "^3.5.4"
   },
   "devDependencies": {
-    "eslint": "^3.5.0",
-    "eslint-config-airbnb-base": "^7.1.0",
-    "eslint-plugin-import": "^1.14.0"
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-plugin-import": "^2.1.0"
   },
   "package-deps": [
     "linter"
@@ -38,7 +40,6 @@
     "extends": "airbnb-base",
     "rules": {
       "global-require": "off",
-      "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": [
         "error",
         {
@@ -49,7 +50,6 @@
       ]
     },
     "env": {
-      "es6": true,
       "node": true
     },
     "globals": {

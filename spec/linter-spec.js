@@ -13,12 +13,12 @@ describe('Js-YAML provider for Linter', () => {
     // Info about this beforeEach() implementation:
     // https://github.com/AtomLinter/Meta/issues/15
     const activationPromise = atom.packages.activatePackage('linter-js-yaml').then(() =>
-      atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include'])
+      atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include']),
     );
 
     waitsForPromise(() =>
       atom.packages.activatePackage('language-yaml').then(() =>
-        atom.workspace.open('ok-if-it-doesnt-exist.yml')
+        atom.workspace.open('ok-if-it-doesnt-exist.yml'),
     ));
 
     atom.packages.triggerDeferredActivationHooks();
@@ -34,8 +34,8 @@ describe('Js-YAML provider for Linter', () => {
         expect(messages[0].text).toEqual('end of the stream or a document separator is expected');
         expect(messages[0].filePath).toMatch(/.+bad\.yaml$/);
         expect(messages[0].range).toEqual([[2, 4], [2, 5]]);
-      })
-    )
+      }),
+    ),
   );
 
   it('finds nothing wrong with issue-2.yaml.', () =>
@@ -43,8 +43,8 @@ describe('Js-YAML provider for Linter', () => {
       atom.workspace.open(issue2Path).then((editor) => {
         const messages = lint(editor);
         expect(messages.length).toEqual(0);
-      })
-    )
+      }),
+    ),
   );
 
   it('finds nothing wrong with issue-9.yaml.', () =>
@@ -52,7 +52,7 @@ describe('Js-YAML provider for Linter', () => {
       atom.workspace.open(issue9Path).then((editor) => {
         const messages = lint(editor);
         expect(messages.length).toEqual(0);
-      })
-    )
+      }),
+    ),
   );
 });
