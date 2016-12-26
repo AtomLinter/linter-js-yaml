@@ -1,0 +1,12 @@
+InstanceId:
+  Condition: DoLaunchInstance
+  Description: Stack Instance ID
+  Value: !<!Ref> WindowsSingleBox
+  UserData: !If
+    - DoWriteConnectionString
+    - !Base64
+        Fn::Sub:
+        - |
+          #!/bin/bash -xe
+          cfn-init -v --stack ${AWS::StackName} --resource Box --region ${AWS::Region}
+          cfn-signal -e 0 --stack ${AWS::StackName} --resource Box --region ${AWS::Region}
