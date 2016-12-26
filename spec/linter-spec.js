@@ -4,6 +4,7 @@ import * as path from 'path';
 
 const badPath = path.join(__dirname, 'files', 'bad.yaml');
 const issue2Path = path.join(__dirname, 'files', 'issue-2.yaml');
+const issue3Path = path.join(__dirname, 'files', 'issue-3.yaml');
 const issue9Path = path.join(__dirname, 'files', 'issue-9.yaml');
 
 describe('Js-YAML provider for Linter', () => {
@@ -13,6 +14,7 @@ describe('Js-YAML provider for Linter', () => {
     waitsForPromise(() =>
       atom.packages.activatePackage('linter-js-yaml').then(() =>
         atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include'])
+        // atom.config.set('linter-js-yaml.customTags', [])
       )
     )
   );
@@ -34,6 +36,17 @@ describe('Js-YAML provider for Linter', () => {
     waitsForPromise(() =>
       atom.workspace.open(issue2Path).then((editor) => {
         const messages = lint(editor);
+        // console.log(require('util').inspect(messages, { depth: 4 }));
+        expect(messages.length).toEqual(0);
+      })
+    )
+  );
+
+  it('finds nothing wrong with issue-3.yaml.', () =>
+    waitsForPromise(() =>
+      atom.workspace.open(issue3Path).then((editor) => {
+        const messages = lint(editor);
+        // console.log(require('util').inspect(messages, { depth: 4 }));
         expect(messages.length).toEqual(0);
       })
     )
