@@ -2,8 +2,8 @@
   "name": "linter-js-cloudformation-yaml",
   "version": "0.0.0",
   "description": "Linter plugin for YAML, using js-yaml",
-  "repository": "https://github.com/AtomLinter/linter-js-cloudformation-yaml.git",
-  "homepage": "https://github.com/AtomLinter/linter-js-cloudformation-yaml",
+  "repository": "https://github.com/yyolk/linter-js-cloudformation-yaml.git",
+  "homepage": "https://github.com/yyolk/linter-js-cloudformation-yaml",
   "license": "MIT",
   "activationHooks": [
     "language-yaml:grammar-used"
