@@ -8,13 +8,13 @@ const issue3Path = path.join(__dirname, 'files', 'issue-3.yaml');
 const issue9Path = path.join(__dirname, 'files', 'issue-9.yaml');
 
 describe('Js-YAML provider for Linter', () => {
-  const lint = require('../lib/linter-js-yaml.js').provideLinter().lint;
+  const lint = require('../lib/linter-js-cloudformation-yaml.js').provideLinter().lint;
 
   beforeEach(() =>
     waitsForPromise(() =>
-      atom.packages.activatePackage('linter-js-yaml').then(() =>
-        atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include'])
-        // atom.config.set('linter-js-yaml.customTags', [])
+      atom.packages.activatePackage('linter-js-cloudformation-yaml').then(() =>
+        atom.config.set('linter-js-cloudformation-yaml.customTags', ['!yaml', '!include'])
+        // atom.config.set('linter-js-cloudformation-yaml.customTags', [])
       )
     )
   );
