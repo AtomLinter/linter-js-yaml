@@ -1,6 +1,6 @@
 {
   "name": "linter-js-cloudformation-yaml",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Linter plugin for YAML, using js-yaml",
   "repository": "https://github.com/AtomLinter/linter-js-cloudformation-yaml.git",
   "homepage": "https://github.com/AtomLinter/linter-js-cloudformation-yaml",
