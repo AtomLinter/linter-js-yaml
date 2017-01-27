@@ -4,16 +4,17 @@ import * as path from 'path';
 
 const badPath = path.join(__dirname, 'files', 'bad.yaml');
 const issue2Path = path.join(__dirname, 'files', 'issue-2.yaml');
+const issue3Path = path.join(__dirname, 'files', 'issue-3.yaml');
 const issue9Path = path.join(__dirname, 'files', 'issue-9.yaml');
 
 describe('Js-YAML provider for Linter', () => {
-  const lint = require('../lib/linter-js-yaml.js').provideLinter().lint;
+  const lint = require('../lib/linter-js-cloudformation-yaml.js').provideLinter().lint;
 
   beforeEach(() => {
     // Info about this beforeEach() implementation:
     // https://github.com/AtomLinter/Meta/issues/15
-    const activationPromise = atom.packages.activatePackage('linter-js-yaml').then(() =>
-      atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include']),
+    const activationPromise = atom.packages.activatePackage('linter-js-cloudformation-yaml').then(() =>
+      atom.config.set('linter-js-cloudformation-yaml.customTags', ['!yaml', '!include']),
     );
 
     waitsForPromise(() =>
@@ -41,6 +42,15 @@ describe('Js-YAML provider for Linter', () => {
   it('finds nothing wrong with issue-2.yaml.', () =>
     waitsForPromise(() =>
       atom.workspace.open(issue2Path).then((editor) => {
+        const messages = lint(editor);
+        expect(messages.length).toEqual(0);
+      }),
+    ),
+  );
+
+  it('finds nothing wrong with issue-3.yaml.', () =>
+    waitsForPromise(() =>
+      atom.workspace.open(issue3Path).then((editor) => {
         const messages = lint(editor);
         expect(messages.length).toEqual(0);
       }),
