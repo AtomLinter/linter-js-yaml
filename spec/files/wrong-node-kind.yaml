@@ -1,0 +1,4 @@
+---
+hash:
+  key1: !epsilon some scalar value
+  key2: value
