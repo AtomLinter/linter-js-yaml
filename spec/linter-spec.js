@@ -18,7 +18,7 @@ describe('Js-YAML provider for Linter', () => {
 
     waitsForPromise(() =>
       atom.packages.activatePackage('language-yaml').then(() =>
-        atom.workspace.open('ok-if-it-doesnt-exist.yml'),
+        atom.workspace.open(badPath),
       ),
     );
 
