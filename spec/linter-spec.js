@@ -7,20 +7,17 @@ const issue2Path = path.join(__dirname, 'files', 'issue-2.yaml');
 const issue9Path = path.join(__dirname, 'files', 'issue-9.yaml');
 
 describe('Js-YAML provider for Linter', () => {
-  const lint = require('../lib/linter-js-yaml.js').provideLinter().lint;
+  const { lint } = require('../lib/linter-js-yaml.js').provideLinter();
 
   beforeEach(() => {
     // Info about this beforeEach() implementation:
     // https://github.com/AtomLinter/Meta/issues/15
     const activationPromise = atom.packages.activatePackage('linter-js-yaml').then(() =>
-      atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include']),
-    );
+      atom.config.set('linter-js-yaml.customTags', ['!yaml', '!include']));
 
     waitsForPromise(() =>
       atom.packages.activatePackage('language-yaml').then(() =>
-        atom.workspace.open(badPath),
-      ),
-    );
+        atom.workspace.open(badPath)));
 
     atom.packages.triggerDeferredActivationHooks();
     waitsForPromise(() => activationPromise);
@@ -35,25 +32,19 @@ describe('Js-YAML provider for Linter', () => {
         expect(messages[0].text).toBe('end of the stream or a document separator is expected');
         expect(messages[0].filePath).toBe(badPath);
         expect(messages[0].range).toEqual([[2, 4], [2, 5]]);
-      }),
-    ),
-  );
+      })));
 
   it('finds nothing wrong with issue-2.yaml.', () =>
     waitsForPromise(() =>
       atom.workspace.open(issue2Path).then((editor) => {
         const messages = lint(editor);
         expect(messages.length).toBe(0);
-      }),
-    ),
-  );
+      })));
 
   it('finds nothing wrong with issue-9.yaml.', () =>
     waitsForPromise(() =>
       atom.workspace.open(issue9Path).then((editor) => {
         const messages = lint(editor);
         expect(messages.length).toBe(0);
-      }),
-    ),
-  );
+      })));
 });
