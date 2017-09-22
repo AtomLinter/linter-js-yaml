@@ -1,5 +1,24 @@
 # Change Log
 
+## [v1.2.8](https://github.com/AtomLinter/linter-js-yaml/tree/v1.2.8) (2017-09-22)
+[Full Changelog](https://github.com/AtomLinter/linter-js-yaml/compare/v1.2.7...v1.2.8)
+
+**Implemented enhancements:**
+
+- chore\(package\): update js-yaml to version 3.10.0 [\#126](https://github.com/AtomLinter/linter-js-yaml/pull/126) ([Arcanemagus](https://github.com/Arcanemagus))
+- Asyncify the specs [\#124](https://github.com/AtomLinter/linter-js-yaml/pull/124) ([Arcanemagus](https://github.com/Arcanemagus))
+- Update CI configuration [\#123](https://github.com/AtomLinter/linter-js-yaml/pull/123) ([Arcanemagus](https://github.com/Arcanemagus))
+- Update eslint-config-airbnb-base to version 12.0.0 🚀 [\#119](https://github.com/AtomLinter/linter-js-yaml/pull/119) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update eslint to version 4.3.0 🚀 [\#113](https://github.com/AtomLinter/linter-js-yaml/pull/113) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update atom-linter to version 10.0.0 🚀 [\#110](https://github.com/AtomLinter/linter-js-yaml/pull/110) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
+**Fixed bugs:**
+
+- Object.basename is deprecated. [\#120](https://github.com/AtomLinter/linter-js-yaml/issues/120)
+- Guard against invalid TextEditors [\#125](https://github.com/AtomLinter/linter-js-yaml/pull/125) ([Arcanemagus](https://github.com/Arcanemagus))
+- Update Travis CI configuration [\#115](https://github.com/AtomLinter/linter-js-yaml/pull/115) ([Arcanemagus](https://github.com/Arcanemagus))
+- Use strict equality in test assertions where possible [\#108](https://github.com/AtomLinter/linter-js-yaml/pull/108) ([idpaterson](https://github.com/idpaterson))
+
 ## [v1.2.7](https://github.com/AtomLinter/linter-js-yaml/tree/v1.2.7) (2017-02-23)
 [Full Changelog](https://github.com/AtomLinter/linter-js-yaml/compare/v1.2.6...v1.2.7)
 
