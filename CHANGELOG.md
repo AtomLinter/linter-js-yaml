@@ -1,3 +1,11 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/AtomLinter/linter-js-yaml/compare/v1.2.8...v1.3.0) (2018-04-21)
+
+
+### Features
+
+* adds support for alternate node kinds ([#107](https://github.com/AtomLinter/linter-js-yaml/issues/107)) ([ce43071](https://github.com/AtomLinter/linter-js-yaml/commit/ce43071))
+
 # Change Log
 
 ## [v1.2.8](https://github.com/AtomLinter/linter-js-yaml/tree/v1.2.8) (2017-09-22)
