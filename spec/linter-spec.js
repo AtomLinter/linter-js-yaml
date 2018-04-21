@@ -56,16 +56,13 @@ describe('Js-YAML provider for Linter', () => {
       atom.workspace.open(issue9Path).then((editor) => {
         const messages = lint(editor);
         expect(messages.length).toEqual(0);
-      }),
-    ),
-  );
+      })));
 
   describe('with node kinds in customTags', () => {
     beforeEach(() =>
       atom.config.set('linter-js-yaml.customTags', [
         '!yaml scalar', '!delta mapping', '!epsilon sequence',
-      ]),
-    );
+      ]));
 
     it('finds something wrong with wrong-node-kind.yaml', () =>
       waitsForPromise(() =>
@@ -76,17 +73,13 @@ describe('Js-YAML provider for Linter', () => {
           expect(messages[0].text).toBe('unknown tag !<!epsilon>');
           expect(messages[0].filePath).toBe(wrongNodeKind);
           expect(messages[0].range).toEqual([[2, 34], [2, 34]]);
-        }),
-      ),
-    );
+        })));
 
     it('finds nothing wrong with node-kinds.yaml.', () =>
       waitsForPromise(() =>
         atom.workspace.open(nodeKinds).then((editor) => {
           const messages = lint(editor);
           expect(messages.length).toBe(0);
-        }),
-      ),
-    );
+        })));
   });
 });
