@@ -11,14 +11,17 @@ $ apm install linter-js-yaml
 
 #### Settings
 
-You can configure linter-js-yaml by editing ~/.atom/config.cson (choose Open Your Config in Atom menu) or in Preferences:
+You can configure linter-js-yaml by editing ~/.atom/config.cson (choose Open Your Config in Atom menu) or in Preferences.
+The node kind defaults to `scalar`, however `mapping` and `sequence` kinds can be specified following a space separator:
 
 ```cson
 'linter-js-yaml':
   'customTags': [
     "!yaml"
     "!include"
+    "!delta mapping"
+    "!epsilon sequence"
   ]
 ```
 
-* `customTags`: List of YAML custom tags. (Default: scalar)
+* `customTags`: List of YAML custom tags, each optionally followed by a space and the node kind (scalar, mapping, or sequence).

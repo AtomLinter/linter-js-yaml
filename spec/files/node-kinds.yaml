@@ -1,0 +1,7 @@
+---
+hash: !delta
+  key1: !yaml some scalar value
+  key2: !epsilon
+    - some
+    - sequence
+    - value

@@ -7,6 +7,8 @@ import * as path from 'path';
 const badPath = path.join(__dirname, 'files', 'bad.yaml');
 const issue2Path = path.join(__dirname, 'files', 'issue-2.yaml');
 const issue9Path = path.join(__dirname, 'files', 'issue-9.yaml');
+const wrongNodeKind = path.join(__dirname, 'files', 'wrong-node-kind.yaml');
+const nodeKinds = path.join(__dirname, 'files', 'node-kinds.yaml');
 
 describe('Js-YAML provider for Linter', () => {
   const { lint } = require('../lib/linter-js-yaml.js').provideLinter();
@@ -47,5 +49,37 @@ describe('Js-YAML provider for Linter', () => {
     const messages = await lint(editor);
 
     expect(messages.length).toBe(0);
+  });
+
+  it('finds nothing wrong with issue-9.yaml.', () =>
+    waitsForPromise(() =>
+      atom.workspace.open(issue9Path).then((editor) => {
+        const messages = lint(editor);
+        expect(messages.length).toEqual(0);
+      })));
+
+  describe('with node kinds in customTags', () => {
+    beforeEach(() =>
+      atom.config.set('linter-js-yaml.customTags', [
+        '!yaml scalar', '!delta mapping', '!epsilon sequence',
+      ]));
+
+    it('finds something wrong with wrong-node-kind.yaml', () =>
+      waitsForPromise(() =>
+        atom.workspace.open(wrongNodeKind).then((editor) => {
+          const messages = lint(editor);
+          expect(messages.length).toBe(1);
+          expect(messages[0].type).toBe('Error');
+          expect(messages[0].text).toBe('unknown tag !<!epsilon>');
+          expect(messages[0].filePath).toBe(wrongNodeKind);
+          expect(messages[0].range).toEqual([[2, 34], [2, 34]]);
+        })));
+
+    it('finds nothing wrong with node-kinds.yaml.', () =>
+      waitsForPromise(() =>
+        atom.workspace.open(nodeKinds).then((editor) => {
+          const messages = lint(editor);
+          expect(messages.length).toBe(0);
+        })));
   });
 });
