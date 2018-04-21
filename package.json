@@ -18,7 +18,7 @@
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint": "eslint .",
-    "test": "apm test"
+    "test": "atom --test spec"
   },
   "dependencies": {
     "atom-linter": "^10.0.0",
