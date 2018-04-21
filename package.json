@@ -14,7 +14,7 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "main": "./lib/linter-js-yaml.js",
+  "main": "./lib/linter-js-yaml",
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint": "eslint .",
