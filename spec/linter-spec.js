@@ -31,10 +31,10 @@ describe('Js-YAML provider for Linter', () => {
     const messages = await lint(editor);
 
     expect(messages.length).toBe(1);
-    expect(messages[0].type).toBe('Error');
-    expect(messages[0].text).toBe('end of the stream or a document separator is expected');
-    expect(messages[0].filePath).toBe(badPath);
-    expect(messages[0].range).toEqual([[2, 4], [2, 5]]);
+    expect(messages[0].severity).toBe('error');
+    expect(messages[0].excerpt).toBe('end of the stream or a document separator is expected');
+    expect(messages[0].location.file).toBe(badPath);
+    expect(messages[0].location.position).toEqual([[2, 4], [2, 5]]);
   });
 
   it('finds nothing wrong with issue-2.yaml.', async () => {
@@ -69,10 +69,10 @@ describe('Js-YAML provider for Linter', () => {
         atom.workspace.open(wrongNodeKind).then((editor) => {
           const messages = lint(editor);
           expect(messages.length).toBe(1);
-          expect(messages[0].type).toBe('Error');
-          expect(messages[0].text).toBe('unknown tag !<!epsilon>');
-          expect(messages[0].filePath).toBe(wrongNodeKind);
-          expect(messages[0].range).toEqual([[2, 34], [2, 34]]);
+          expect(messages[0].severity).toBe('error');
+          expect(messages[0].excerpt).toBe('unknown tag !<!epsilon>');
+          expect(messages[0].location.file).toBe(wrongNodeKind);
+          expect(messages[0].location.position).toEqual([[2, 34], [2, 34]]);
         })));
 
     it('finds nothing wrong with node-kinds.yaml.', () =>
