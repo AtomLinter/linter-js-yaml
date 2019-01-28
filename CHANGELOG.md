@@ -1,3 +1,11 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/AtomLinter/linter-js-yaml/compare/v1.3.0...v1.4.0) (2019-01-28)
+
+
+### Features
+
+* upgrade to Linter API v2 ([da89200](https://github.com/AtomLinter/linter-js-yaml/commit/da89200))
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/AtomLinter/linter-js-yaml/compare/v1.2.8...v1.3.0) (2018-04-21)
 
