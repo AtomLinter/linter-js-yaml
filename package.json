@@ -16,7 +16,6 @@
   },
   "main": "./lib/linter-js-yaml",
   "scripts": {
-    "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint": "eslint .",
     "test": "atom --test spec"
   },
@@ -74,6 +73,11 @@
     "extends": [
       "config:base"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "commitlint": {
     "extends": [
