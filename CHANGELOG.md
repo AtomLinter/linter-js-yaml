@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/AtomLinter/linter-js-yaml/compare/v1.4.0...v1.4.1) (2019-01-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency atom-package-deps to v5 ([c34c232](https://github.com/AtomLinter/linter-js-yaml/commit/c34c232))
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/AtomLinter/linter-js-yaml/compare/v1.3.0...v1.4.0) (2019-01-28)
 
