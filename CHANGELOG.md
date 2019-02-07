@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/AtomLinter/linter-js-yaml/compare/v1.4.1...v1.4.2) (2019-02-07)
+
+
+### Bug Fixes
+
+* **deps:** pin remaining dependencies ([d4bca10](https://github.com/AtomLinter/linter-js-yaml/commit/d4bca10)), closes [#155](https://github.com/AtomLinter/linter-js-yaml/issues/155)
+
 ## [1.4.1](https://github.com/AtomLinter/linter-js-yaml/compare/v1.4.0...v1.4.1) (2019-01-29)
 
 
