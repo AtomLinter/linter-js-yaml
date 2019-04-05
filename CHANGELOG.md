@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/AtomLinter/linter-js-yaml/compare/v1.4.4...v1.4.5) (2019-04-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency js-yaml to v3.13.1 ([514bd97](https://github.com/AtomLinter/linter-js-yaml/commit/514bd97))
+
 ## [1.4.4](https://github.com/AtomLinter/linter-js-yaml/compare/v1.4.3...v1.4.4) (2019-03-20)
 
 
