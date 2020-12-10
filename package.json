@@ -22,7 +22,7 @@
   "dependencies": {
     "atom-linter": "10.0.0",
     "atom-package-deps": "5.1.0",
-    "js-yaml": "3.13.1"
+    "js-yaml": "3.14.1"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
